@@ -1,8 +1,26 @@
-#include <fstream>
 #include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
-void addTask() {}
+ofstream file;
+
+void addTask() {
+    file.open("todo.txt",ios::app);
+
+    if(!file.is_open()){
+        cerr << "Error : Unable to open the file" << endl;
+        return ;
+    }
+
+    string str;
+    cout << "Enter the task : " << endl;
+    cin.ignore();
+    getline(cin,str);
+    file << str;
+    file.close();
+}
+
 void viewTask() {}
 void deleteTask() {}
 
